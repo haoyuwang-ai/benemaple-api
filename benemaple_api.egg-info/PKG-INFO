@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: benemaple-api
+Version: 0.1.0
+Summary: FastAPI backend for BeneMaple's Canadian benefits RAG service.
+Requires-Python: <3.13,>=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi[standard]<1.0,>=0.139
+Requires-Dist: openai<3,>=2
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8; extra == "dev"
+Dynamic: license-file
+
+# benemaple-api
+FastAPI backend powering BeneMaple's AI and RAG services.
