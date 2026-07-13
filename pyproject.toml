@@ -11,6 +11,8 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
   "fastapi[standard]>=0.139,<1.0",
   "openai>=2,<3",
+  "python-dotenv>=1,<2",
+  "llama-cloud>=2.10,<3",
 ]
 
 [project.optional-dependencies]
