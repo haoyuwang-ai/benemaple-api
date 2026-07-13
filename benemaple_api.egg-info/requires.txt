@@ -1,0 +1,5 @@
+fastapi[standard]<1.0,>=0.139
+openai<3,>=2
+
+[dev]
+pytest<9,>=8
