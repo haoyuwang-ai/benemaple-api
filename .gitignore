@@ -6,6 +6,6 @@ __pycache__/
 # Generated / source RAG documents
 data/raw/
 data/parsed/
-
+data/nodes/
 # Runtime logs
 logs/

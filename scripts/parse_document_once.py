@@ -1,11 +1,10 @@
 import asyncio
-import sys
 from pathlib import Path
 
-from pipeline.llamaparse_client import parse_document
+from pipeline.llama_parse_client import parse_document
+
 
 async def main() -> None:
-
     input_file = Path("data/raw/fctsht_nw_cnd-en.pdf")
     parsed = await parse_document(input_file)
 
@@ -14,6 +13,7 @@ async def main() -> None:
     output_file.write_text(parsed.markdown, encoding="utf-8")
 
     print(f"Saved: {output_file}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
