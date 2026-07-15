@@ -14,6 +14,8 @@ dependencies = [
   "python-dotenv>=1,<2",
   "llama-cloud>=2.10,<3",
   "llama-index-core>=0.14,<0.15",
+  "llama-index-embeddings-openai",
+  "llama-index-llms-openai",
 ]
 
 [project.optional-dependencies]
