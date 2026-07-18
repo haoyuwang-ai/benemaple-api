@@ -11,6 +11,11 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
   "fastapi[standard]>=0.139,<1.0",
   "openai>=2,<3",
+  "python-dotenv>=1,<2",
+  "llama-cloud>=2.10,<3",
+  "llama-index-core>=0.14,<0.15",
+  "llama-index-embeddings-openai",
+  "llama-index-llms-openai",
 ]
 
 [project.optional-dependencies]
@@ -19,7 +24,7 @@ dev = [
 ]
 
 [tool.setuptools]
-packages = ["app"]
+packages = ["app", "pipeline"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

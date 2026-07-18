@@ -1,18 +1,16 @@
 from fastapi import FastAPI
-from pydantic import BaseModel, Field
-from typing import Any
+from app.schemas import QuestionRequest, QuestionResponse
+from app.source_builder import build_sources
+
+from dotenv import load_dotenv
+
+from pipeline.rag_query import create_query_engine
+
+load_dotenv()
 
 app = FastAPI()
 
-# 问题格式
-class QuestionRequest(BaseModel):
-    question: str = Field(min_length=1, max_length=1000)
-    profile: dict[str, Any] = Field(default_factory=dict)
-
-# 回答格式
-class QuestionResponse(BaseModel):
-    answer: str
-
+query_engine = create_query_engine()
 
 @app.get("/")
 def read_root():
@@ -24,6 +22,11 @@ def health_check():
 
 @app.post("/questions", response_model=QuestionResponse)
 def ask_question(request: QuestionRequest):
+    response = query_engine.query(request.question)
+
+    sources = build_sources(response.source_nodes)
+
     return QuestionResponse(
-        answer=f"暂时的模拟回答：你问的是「{request.question}」"
+        answer=str(response),
+        sources=sources,
     )
