@@ -27,13 +27,17 @@ Answer:
 )
 
 
-def create_query_engine() -> BaseQueryEngine:
+def create_query_engine(
+    *,
+    streaming: bool = False,
+) -> BaseQueryEngine:
     index = load_vector_index()
     llm = get_llm()
 
     return index.as_query_engine(
         llm=llm,
         similarity_top_k=3,
-        response_mode="compact",
+        response_mode="simple_summarize",
         text_qa_template=QA_PROMPT,
+        streaming=streaming,
     )
